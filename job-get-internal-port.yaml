@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: get-internal-content
+  namespace: k8spart1
+spec:
+  template:
+    spec:
+      containers:
+      - name: curl
+        image: curlimages/curl:latest
+        command: ['sh', '-c', 'curl 10.96.1.10']
+      restartPolicy: OnFailure

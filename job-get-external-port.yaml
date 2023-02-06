@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: get-external-content
+  namespace: k8spart1
+spec:
+  template:
+    spec:
+      containers:
+      - name: curl
+        image: curlimages/curl:latest
+        command: ['sh', '-c', 'curl 35.205.170.73:31000']
+      restartPolicy: OnFailure
